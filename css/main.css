@@ -1,7 +1,56 @@
+@font-face{
+    font-family: "MachineStd-Bold";
+    src: url(../fonts/Space-Invaders-Font/MachineStd-Bold.otf);
+}
+@font-face{
+    font-family: "spaceInvaders";
+    src: url(../fonts/Space-Invaders-Font/PressStart2P-Regular.ttf)
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    background-color: black; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
+.container{
+    margin-top: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+}
+
+#pressStart{
+    font-family: "spaceInvaders" ;
+    color: white; 
+    text-decoration: none;
+    animation-duration: .8s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+    transition: none;
+}
+
+@keyframes clignoter {
+    0%   { opacity:1; }
+    40%   {opacity:0; }
+    100% { opacity:1; }
+  }
+
+#title{
+    font-size: 5em;
+    color: white;
+    font-family: "MachineStd-Bold";
+    margin-bottom: 0;
+}
+
+
+
