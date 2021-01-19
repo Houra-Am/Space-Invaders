@@ -1,0 +1,38 @@
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    border: solid white 1px;
+    width: 300px;
+    height: 300px;
+}
+
+.grid div {
+    width: 20px;
+    height: 20px;
+}
+
+.shooter {
+    background-image: url(../images/pngkey.com-space-invader-png-1925981.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 5px;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+
+.invader {
+    background-image: url(../images/invaders_white.png);
+    background-size: contain;
+    width: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.boom {
+    background-color: red;
+}
+
+.laser {
+    background-color: orange;
+}
