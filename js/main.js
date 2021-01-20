@@ -91,10 +91,43 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
     };
-
     invaderId = setInterval(moveInvader, 200);
 
+    //shoot at aliens
+    function shoot(e) {
+        var laserId = null;
+        var currentLaserIndex = currentShooterIndex;
+        function moveLaser() {
+            squares[currentLaserIndex].classList.remove("laser");
+            currentLaserIndex -= width;
+            squares[currentLaserIndex].classList.add("laser")
+            if (squares[currentLaserIndex].contains('invader')) {
+                squares[currentInvaderIndex].classList.remove('laser')
+                squares[currentInvaderIndex].classList.remove('invader')
+                squares[currentInvaderIndex].classList.add('boom')
 
+                setTimeout(() => squares[currentLaserIndex].classList.remove('boom'), 250)
+                clearInterval(laserId)
+
+                const alienTakenDown = alienInvaders.indexOf(currentLaserIndex)
+                alienInvaderTakenDown.push(alienTakenDown)
+                result++
+                resultDisplay.textContent = result
+            }
+            if (currentLaserIndex < width) {
+                clearInterval(laserId)
+                setTimeout(() => squares[currentLaserIndex].classList.remove('laser'), 100)
+            }
+        }
+
+        document.addEventListener('keyup', e => {
+            if (e.keyCode === 32 || e.keyCode === 38) {
+                laserId = setInterval(moveLaser, 100)
+            }
+        })
+        document.addEventListener("keyup", shoot)
+
+}
 
 
 });
