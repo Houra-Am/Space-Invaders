@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(invaderId);
         }
     };
-    invaderId = setInterval(moveInvader, 200);
+    invaderId = setInterval(moveInvader, 50);
 
     //shoot at aliens
     function shoot(e) {
@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
             currentLaserIndex -= width;
             squares[currentLaserIndex].classList.add("laser")
             if (squares[currentLaserIndex].classList.contains('invader')) {
-                squares[currentInvaderIndex].classList.remove('laser')
-                squares[currentInvaderIndex].classList.remove('invader')
-                squares[currentInvaderIndex].classList.add('boom')
+                squares[currentLaserIndex].classList.remove('laser')
+                squares[currentLaserIndex].classList.remove('invader')
+                squares[currentLaserIndex].classList.add('boom')
 
                 setTimeout(() => squares[currentLaserIndex].classList.remove('boom'), 250)
                 clearInterval(laserId)
