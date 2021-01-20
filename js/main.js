@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var result = 0;
     var direction = 1;
     var invaderId = null;
+    var h2 = document.querySelector("h2")
 
 
     // alien invaders
@@ -78,15 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //game over
         if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
-            resultDisplay.textContent = 'Game Over';
+            h2.textContent = 'Game Over';
             squares[currentShooterIndex].classList.add('boom');
             clearInterval(invaderId);
         };
 
         for (var i = 0; i <= alienInvaders.length - 1; i++) {
             if (alienInvaders[i] > (squares.length - (width - 1))) {
-                resultDisplay.textContent = 'Game Over';
-                resultDisplay.classList.add("alert");
+                h2.textContent = 'Game Over';
+                h2.classList.add("gameOver");
 
                 clearInterval(invaderId);
             };
@@ -94,12 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // who's the winner ?
 
         if (alienInvaderTakenDown.length === alienInvaders.length) {
-            resultDisplay.textContent = 'Congrats! You Win!';
-            resultDisplay.classList.add("winner");
+            h2.textContent = 'Congrats! You Win!';
+            h2.classList.add("winner");
             clearInterval(invaderId);
         }
     };
-    invaderId = setInterval(moveInvader, 50);
+    invaderId = setInterval(moveInvader, 500);
 
     //shoot at aliens
     function shoot(e) {

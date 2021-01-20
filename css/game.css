@@ -41,12 +41,20 @@ h3 {
     background-color: red;
 }
 
-.alert {
+.gameOver {
+    font-family: "spaceInvaders";
     color: red;
     position: absolute;
-    top: 250px;
+    top: 300px;
 }
 
 .laser {
     background-color: orange;
+}
+
+.winner{
+    font-family: "spaceInvaders";
+    color: green;
+    position: absolute;
+    top: 300px;
 }
