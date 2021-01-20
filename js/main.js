@@ -1,3 +1,5 @@
+// change the timer (set interval)
+
 document.addEventListener('DOMContentLoaded', () => {
     const squares = document.querySelectorAll('.grid div');
     const resultDisplay = document.querySelector('#result');
@@ -58,37 +60,39 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 direction = -1
             };
-            for (var i = 0; i < alienInvaders.length - 1; i++) {
-                squares[alienInvaders[i]].classList.remove('invader');
+        };
 
-            };
-            for (var i = 0; i < alienInvaders.length - 1; i++) {
-                alienInvaders[i] += direction;
+        for (var i = 0; i <= alienInvaders.length - 1; i++) {
+            squares[alienInvaders[i]].classList.remove('invader');
+        };
+        for (var i = 0; i <= alienInvaders.length - 1; i++) {
+            alienInvaders[i] += direction;
+        };
 
-            };
-            for (var i = 0; i < alienInvaders.length - 1; i++) {
-                squares[alienInvaders[i]].classList.add('invader');
+        for (var i = 0; i <= alienInvaders.length - 1; i++) {
+            squares[alienInvaders[i]].classList.add('invader');
+        };
 
-            };
 
-            //game over
-            if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
+        //game over
+        if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
+            resultDisplay.textContent = 'Game Over';
+            squares[currentShooterIndex].classList.add('boom');
+            clearInterval(invaderId);
+        };
+
+        for (var i = 0; i <= alienInvaders.length - 1; i++) {
+            if (alienInvaders[i] > (squares.length - (width - 1))) {
                 resultDisplay.textContent = 'Game Over';
-                squares[currentShooterIndex].classList.add('boom');
+                resultDisplay.classList.add("alert");
+
                 clearInterval(invaderId);
             };
-
-            for (var i = 0; i <= alienInvaders.length - 1; i++) {
-                if (alienInvaders[i] > (squares.length - (width - 1))) {
-                    resultDisplay.textContent = 'Game Over';
-                    clearInterval(invaderId);
-                };
-            };
         };
-        invaderId = setInterval(moveInvader, 500);
-        console.log(invaderId);
+
     };
-    moveInvader();
+
+    invaderId = setInterval(moveInvader, 200);
 
 
 

@@ -6,6 +6,13 @@
     height: 300px;
 }
 
+h3 {
+    font-size: 1em;
+    color: white;
+    font-family: "spaceInvaders";
+    margin-bottom: 10px;
+}
+
 .grid div {
     width: 20px;
     height: 20px;
@@ -31,6 +38,10 @@
 
 .boom {
     background-color: red;
+}
+
+.alert {
+    color: red;
 }
 
 .laser {

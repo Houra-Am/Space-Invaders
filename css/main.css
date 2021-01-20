@@ -30,7 +30,7 @@ body {
     font-family: "spaceInvaders";
     color: white;
     text-decoration: none;
-    animation-duration: .8s;
+    animation-duration: 1s;
     animation-name: clignoter;
     animation-iteration-count: infinite;
     transition: none;
