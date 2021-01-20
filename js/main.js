@@ -70,7 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         for (var i = 0; i <= alienInvaders.length - 1; i++) {
-            squares[alienInvaders[i]].classList.add('invader');
+            if (!alienInvaderTakenDown.includes(i)) {
+                squares[alienInvaders[i]].classList.add('invader');
+            }
         };
 
 
@@ -89,6 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(invaderId);
             };
         };
+        // who's the winner ?
+
+        if (alienInvaderTakenDown.length === alienInvaders.length) {
+            resultDisplay.textContent = 'Congrats! You Win!';
+            resultDisplay.classList.add("winner");
+            clearInterval(invaderId);
+        }
+
 
     };
     invaderId = setInterval(moveInvader, 200);
