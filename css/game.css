@@ -30,7 +30,7 @@ h3 {
 }
 
 .invader {
-    background-image: url(../images/invaders_white.png);
+    background-image: url(../images/invaders-gif.gif);
     background-size: contain;
     width: 5px;
     box-sizing: border-box;
@@ -38,7 +38,8 @@ h3 {
 }
 
 .boom {
-    background-color: red;
+    background-image: url(../images/explosion.gif);
+    background-size: contain;
 }
 
 .gameOver {
@@ -49,7 +50,8 @@ h3 {
 }
 
 .laser {
-    background-color: orange;
+    background-image: url(../images/SpaceInvadersLaserDepiction-removebg-preview.png);
+    background-size: contain; 
 }
 
 .winner{
@@ -57,4 +59,8 @@ h3 {
     color: green;
     position: absolute;
     top: 300px;
+    animation-duration: 1s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+    transition: none;
 }

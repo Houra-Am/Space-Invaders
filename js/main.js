@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const alienTakenDown = alienInvaders.indexOf(currentLaserIndex)
                 alienInvaderTakenDown.push(alienTakenDown)
-                result++
+                result += 10
                 resultDisplay.textContent = result
             }
             if (currentLaserIndex < width) {
