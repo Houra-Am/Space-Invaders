@@ -53,19 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
         if ((leftEdge && direction === -1) || (rightEdge && direction === 1)) {
             direction = width;
         } else if (direction === width) {
-            if (leftEdge){
+            if (leftEdge) {
                 direction = 1;
             } else {
-                direction = -1;
-            }
-        }
-        for (var i = 0; i <= alienInvaders.length -1; i++){
-            squares[alienInvaders[i]]
-        }
-    }
+                direction = -1
+            };
+            for (var i = 0; i < alienInvaders.length - 1; i++) {
+                const element = array[i];
+
+            };
+        };
+
+    };
 
 
 
 
 
-})
+});
