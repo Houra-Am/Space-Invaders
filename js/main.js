@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function shoot(e) {
         var laserId = null;
         var currentLaserIndex = currentShooterIndex;
+
         function moveLaser() {
             squares[currentLaserIndex].classList.remove("laser");
             currentLaserIndex -= width;
@@ -123,11 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('keyup', e => {
             if (e.keyCode === 32 || e.keyCode === 38) {
                 laserId = setInterval(moveLaser, 100)
-            }
-        })
-        document.addEventListener("keyup", shoot)
+            };
+        });
 
-}
+    };
+    document.addEventListener("keyup", shoot);
 
 
 });
