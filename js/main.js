@@ -59,13 +59,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 direction = -1
             };
             for (var i = 0; i < alienInvaders.length - 1; i++) {
-                const element = array[i];
+                squares[alienInvaders[i]].classList.remove('invader');
 
             };
+            for (var i = 0; i < alienInvaders.length - 1; i++) {
+                alienInvaders[i] += direction;
+
+            };
+            for (var i = 0; i < alienInvaders.length - 1; i++) {
+                squares[alienInvaders[i]].classList.add('invader');
+
+            };
+
+            //game over
+            if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
+                resultDisplay.textContent = 'Game Over';
+                squares[currentShooterIndex].classList.add('boom');
+                clearInterval(invaderId);
+            };
+
+            for (var i = 0; i <= alienInvaders.length - 1; i++) {
+                if (alienInvaders[i] > (squares.length - (width - 1))) {
+                    resultDisplay.textContent = 'Game Over';
+                    clearInterval(invaderId);
+                };
+            };
         };
-
+        invaderId = setInterval(moveInvader, 500);
+        console.log(invaderId);
     };
-
+    moveInvader();
 
 
 
