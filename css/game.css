@@ -7,6 +7,11 @@
     position: relative;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
 h3 {
     font-size: 1em;
     color: white;

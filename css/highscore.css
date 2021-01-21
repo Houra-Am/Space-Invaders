@@ -1,0 +1,24 @@
+.flex{
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    align-items: center;
+    color: white;
+    font-family: "spaceInvaders";
+}
+
+.haut{
+    color: red;
+}
+
+.score{
+    gap: 60px;
+}
+
+.containerscore{
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
