@@ -45,12 +45,7 @@ h3 {
 .gameOver {
     font-family: "spaceInvaders";
     color: white;
-    position: absolute;
     top: 300px;
-    animation-duration: 1s;
-    animation-name: clignoter;
-    animation-iteration-count: infinite;
-    transition: none;
 }
 
 .laser {
@@ -61,12 +56,7 @@ h3 {
 .winner {
     font-family: "spaceInvaders";
     color: white;
-    position: absolute;
     top: 300px;
-    animation-duration: 1s;
-    animation-name: clignoter;
-    animation-iteration-count: infinite;
-    transition: none;
 }
 
 .lost {
@@ -83,6 +73,28 @@ h3 {
     transition-delay: 1.2s;
     background-size: 600px;
     animation: animate 1.2s steps(8) forwards;
+}
+
+.retryBtn {
+    font-family: "spaceInvaders";
+    color: white;
+    text-decoration: none;
+    animation-duration: 1s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+    transition: none;
+}
+
+.container2 {
+    display: flex;
+    text-align: center;
+    position: absolute;
+    flex-direction: column;
+    margin-top: 17rem;
+}
+
+#score {
+    margin-bottom: 1.5rem;
 }
 
 @keyframes animate {

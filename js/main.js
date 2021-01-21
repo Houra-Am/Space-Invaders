@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var direction = 1;
     var invaderId = null;
     const h2 = document.querySelector("h2");
+    const retry = document.querySelector("#retryBtn");
     const finishGame = document.querySelector("#game");
 
 
@@ -81,7 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
         //game over
         if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
             h2.textContent = 'Game Over';
-            squares[currentShooterIndex].classList.add('boom');
+            retry.textContent = 'Press Here to Retry!';
+            squares[currentShooterIndex].classList.remove('boom');
             document.removeEventListener('keydown', moveShooter);
             document.removeEventListener("keyup", shoot);
 
@@ -93,7 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 squares[currentShooterIndex].classList.remove('shooter');
                 squares[currentShooterIndex].classList.remove('boom');
                 h2.textContent = 'Game Over';
+                retry.textContent = 'Press Here to Retry!';
                 h2.classList.add("gameOver");
+                retry.classList.add('retryBtn');
                 for (var i = 0; i <= alienInvaders.length - 1; i++) {
                     squares[alienInvaders[i]].classList.remove('invader');
                 };
@@ -111,7 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[currentShooterIndex].classList.remove('boom');
             finishGame.classList.add("win");
             h2.textContent = 'Congrats! You Win!';
+            retry.textContent = 'Press Here to Retry!';
             h2.classList.add("winner");
+            retry.classList.add('retryBtn');
             document.removeEventListener('keydown', moveShooter);
             document.removeEventListener("keyup", shoot);
 
