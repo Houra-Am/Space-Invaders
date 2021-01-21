@@ -13,8 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const h2 = document.querySelector("h2");
     const retry = document.querySelector("#retryBtn");
     const finishGame = document.querySelector("#game");
-
-
+    const easy = document.getElementById('easy');
+    const medium = document.getElementById('medium');
+    const difficult = document.getElementById('difficult');
+    const input = document.querySelectorAll("input");
     // alien invaders
 
     const alienInvaders = [
@@ -46,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         squares[currentShooterIndex].classList.add('shooter');
     }
-    document.addEventListener('keydown', moveShooter);
 
 
     //alien invaders attack
@@ -77,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 squares[alienInvaders[i]].classList.add('invader');
             }
         };
+
+
 
 
         //game over
@@ -125,7 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(invaderId);
         }
     };
-    invaderId = setInterval(moveInvader, 500);
+
+
 
     //shoot at aliens
     function shoot(e) {
@@ -158,9 +162,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.keyCode === 32) {
             laserId = setInterval(moveLaser, 100)
         }
-    };
+    
+    }; function startGame(e) {
+        if (e.keyCode === 13) {
+            if (easy.checked) {
+                invaderId = setInterval(moveInvader, 400);
+            } else if (medium.checked) {
+                invaderId = setInterval(moveInvader, 300);
+            } else if (difficult.checked){
+                invaderId = setInterval(moveInvader, 200);
+            }
+            document.addEventListener("keyup", shoot);
+            document.addEventListener('keydown', moveShooter);
+        }
+    }
+    
+    document.addEventListener("keydown", startGame)
 
-    document.addEventListener("keyup", shoot);
 
 
-});
+
+}); 

@@ -97,6 +97,16 @@ h3 {
     margin-bottom: 1.5rem;
 }
 
+.difficulty {
+    margin-top: 2rem;
+    font-family: "spaceInvaders";
+    color: white;
+}
+
+input {
+    background-color: black;
+}
+
 @keyframes animate {
     0% {
         background-position-y: 0;
