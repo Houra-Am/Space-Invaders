@@ -9,8 +9,8 @@
 }
 
 body {
-    height: 88vh;
-    width: 90vw;
+    height: 100vh;
+    width: 100vw;
     background-color: black;
     display: flex;
     flex-direction: column;
@@ -35,6 +35,7 @@ body {
     animation-name: clignoter;
     animation-iteration-count: infinite;
     transition: none;
+    cursor: pointer;
 }
 
 @keyframes clignoter {

@@ -83,6 +83,7 @@ h3 {
     animation-name: clignoter;
     animation-iteration-count: infinite;
     transition: none;
+    cursor: pointer;
 }
 
 .container2 {
