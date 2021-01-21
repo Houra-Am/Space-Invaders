@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const input = document.querySelectorAll("input");
     const timeLeftDisplay = document.querySelector('#time-left')
 
+    // Press Enter to Start
+    function key(){
+        var start = document.getElementById("pressKey")
+        start.style.display = "none"
+    }
+
     // alien invaders
 
     function countDown() {
@@ -216,6 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener("keyup", shoot);
             document.addEventListener('keydown', moveShooter);
             countDown();
+            key()
         }
     }
 

@@ -113,6 +113,19 @@ input {
     background-color: black;
 }
 
+#pressKey {
+    position: absolute;
+    font-family: "spaceInvaders";
+    color: #fc2d48;
+    line-height: 9vw;
+    text-shadow: 0 0 3vw #f40a35;
+    margin-top: 24rem;
+    animation-duration: 1.5s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+    transition: none;
+  }
+
 @keyframes animate {
     0% {
         background-position-y: 0;
