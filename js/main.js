@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     var result = 0;
     var direction = 1;
     var invaderId = null;
-    var h2 = document.querySelector("h2")
+    const h2 = document.querySelector("h2");
+    const finishGame = document.querySelector("#game");
 
 
     // alien invaders
@@ -81,13 +82,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
             h2.textContent = 'Game Over';
             squares[currentShooterIndex].classList.add('boom');
+            document.removeEventListener('keydown', moveShooter);
+            document.removeEventListener("keyup", shoot);
+
             clearInterval(invaderId);
         };
 
         for (var i = 0; i <= alienInvaders.length - 1; i++) {
             if (alienInvaders[i] > (squares.length - (width - 1))) {
+                squares[currentShooterIndex].classList.remove('shooter');
+                squares[currentShooterIndex].classList.remove('boom');
                 h2.textContent = 'Game Over';
                 h2.classList.add("gameOver");
+                for (var i = 0; i <= alienInvaders.length - 1; i++) {
+                    squares[alienInvaders[i]].classList.remove('invader');
+                };
+                finishGame.classList.add("lost");
+                document.removeEventListener('keydown', moveShooter);
+                document.removeEventListener("keyup", shoot);
 
                 clearInterval(invaderId);
             };
@@ -95,8 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // who's the winner ?
 
         if (alienInvaderTakenDown.length === alienInvaders.length) {
+            squares[currentShooterIndex].classList.remove('shooter');
+            squares[currentShooterIndex].classList.remove('boom');
+            finishGame.classList.add("win");
             h2.textContent = 'Congrats! You Win!';
             h2.classList.add("winner");
+            document.removeEventListener('keydown', moveShooter);
+            document.removeEventListener("keyup", shoot);
+
+
             clearInterval(invaderId);
         }
     };

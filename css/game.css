@@ -44,23 +44,52 @@ h3 {
 
 .gameOver {
     font-family: "spaceInvaders";
-    color: red;
-    position: absolute;
-    top: 300px;
-}
-
-.laser {
-    background-image: url(../images/SpaceInvadersLaserDepiction-removebg-preview.png);
-    background-size: contain; 
-}
-
-.winner{
-    font-family: "spaceInvaders";
-    color: green;
+    color: white;
     position: absolute;
     top: 300px;
     animation-duration: 1s;
     animation-name: clignoter;
     animation-iteration-count: infinite;
     transition: none;
+}
+
+.laser {
+    background-image: url(../images/SpaceInvadersLaserDepiction-removebg-preview.png);
+    background-size: contain;
+}
+
+.winner {
+    font-family: "spaceInvaders";
+    color: white;
+    position: absolute;
+    top: 300px;
+    animation-duration: 1s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+    transition: none;
+}
+
+.lost {
+    background-image: url(../images/pixel11.png);
+}
+
+.win {
+    background-image: url(../images/pixel12.png);
+}
+
+.win,
+.lost {
+    z-index: -1;
+    transition-delay: 1.2s;
+    background-size: 600px;
+    animation: animate 1.2s steps(8) forwards;
+}
+
+@keyframes animate {
+    0% {
+        background-position-y: 0;
+    }
+    100% {
+        background-position-y: -1800px;
+    }
 }

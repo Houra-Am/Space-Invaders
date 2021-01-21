@@ -16,6 +16,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    perspective: 1000px;
 }
 
 .container {
@@ -53,4 +54,5 @@ body {
     color: white;
     font-family: "MachineStd-Bold";
     margin-bottom: 0;
+    text-shadow: 8px 2px #ff0000;
 }
