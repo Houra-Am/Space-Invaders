@@ -17,7 +17,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const medium = document.getElementById('medium');
     const difficult = document.getElementById('difficult');
     const input = document.querySelectorAll("input");
+    const timeLeftDisplay = document.querySelector('#time-left')
+    
     // alien invaders
+
+    function countDown() {
+        var timeLeft = 0
+        if(easy.checked){
+            timeLeft = 28
+        }
+        else if(medium.checked){
+            timeLeft = 20
+        }
+        else if(difficult.checked){
+            timeLeft = 13
+        }
+        setInterval(function () {
+            if (timeLeft <= 0) {
+                clearInterval(timeLeft = 0)
+            }
+            timeLeftDisplay.innerHTML = timeLeft
+            timeLeft -= 1
+         }, 1000)
+    }
 
     const alienInvaders = [
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
@@ -150,7 +172,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const alienTakenDown = alienInvaders.indexOf(currentLaserIndex)
                 alienInvaderTakenDown.push(alienTakenDown)
-                result += 10
+                if(easy.checked){
+                    result += 10
+                }
+                else if(medium.checked){
+                    result += 20
+                }
+                else if(difficult.checked){
+                    result += 30
+                }
+                
                 resultDisplay.textContent = result
             }
             if (currentLaserIndex < width) {
@@ -162,21 +193,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.keyCode === 32) {
             laserId = setInterval(moveLaser, 100)
         }
-    
+
     }; function startGame(e) {
         if (e.keyCode === 13) {
             if (easy.checked) {
                 invaderId = setInterval(moveInvader, 400);
             } else if (medium.checked) {
                 invaderId = setInterval(moveInvader, 300);
-            } else if (difficult.checked){
+            } else if (difficult.checked) {
                 invaderId = setInterval(moveInvader, 200);
             }
             document.addEventListener("keyup", shoot);
             document.addEventListener('keydown', moveShooter);
+            countDown()
         }
     }
-    
+
     document.addEventListener("keydown", startGame)
 
 
