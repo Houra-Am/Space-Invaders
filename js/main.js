@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     var result = 0;
     var direction = 1;
     var invaderId = null;
+    // modification 05 - declaring sfx variables
+    var laserSound = new sound("sfx/shoot.wav");
+    var explosionSound = new sound("sfx/explosion.wav");
+    var gameOverSound = new sound("sfx/sfx_sounds_negative1.wav");
+    var winnerSound = new sound("sfx/sfx_sounds_powerup2.wav");
+    // modification 06 - landing page music
+    var backgroundMusic = new sound("sfx/spaceinvaders1.wav");
     const h2 = document.querySelector("h2");
     const retry = document.querySelector("#retryBtn");
     const finishGame = document.querySelector("#game");
@@ -18,27 +25,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const difficult = document.getElementById('difficult');
     const input = document.querySelectorAll("input");
     const timeLeftDisplay = document.querySelector('#time-left')
-    
+
     // alien invaders
 
     function countDown() {
         var timeLeft = 0
-        if(easy.checked){
+        if (easy.checked) {
             timeLeft = 28
-        }
-        else if(medium.checked){
+        } else if (medium.checked) {
             timeLeft = 20
-        }
-        else if(difficult.checked){
+        } else if (difficult.checked) {
             timeLeft = 13
         }
-        setInterval(function () {
+        setInterval(function() {
             if (timeLeft <= 0) {
                 clearInterval(timeLeft = 0)
             }
             timeLeftDisplay.innerHTML = timeLeft
             timeLeft -= 1
-         }, 1000)
+        }, 1000)
     }
 
     const alienInvaders = [
@@ -119,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (alienInvaders[i] > (squares.length - (width - 1))) {
                 squares[currentShooterIndex].classList.remove('shooter');
                 squares[currentShooterIndex].classList.remove('boom');
+                gameOverSound.play();
                 h2.textContent = 'Game Over';
                 retry.textContent = 'Press Here to Retry!';
                 h2.classList.add("gameOver");
@@ -139,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[currentShooterIndex].classList.remove('shooter');
             squares[currentShooterIndex].classList.remove('boom');
             finishGame.classList.add("win");
+            winnerSound.play();
             h2.textContent = 'Congrats! You Win!';
             retry.textContent = 'Press Here to Retry!';
             h2.classList.add("winner");
@@ -163,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentLaserIndex -= width;
             squares[currentLaserIndex].classList.add("laser")
             if (squares[currentLaserIndex].classList.contains('invader')) {
+                explosionSound.play();
                 squares[currentLaserIndex].classList.remove('laser')
                 squares[currentLaserIndex].classList.remove('invader')
                 squares[currentLaserIndex].classList.add('boom')
@@ -172,16 +180,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const alienTakenDown = alienInvaders.indexOf(currentLaserIndex)
                 alienInvaderTakenDown.push(alienTakenDown)
-                if(easy.checked){
+                if (easy.checked) {
                     result += 10
-                }
-                else if(medium.checked){
+                } else if (medium.checked) {
                     result += 20
-                }
-                else if(difficult.checked){
+                } else if (difficult.checked) {
                     result += 30
                 }
-                
+
                 resultDisplay.textContent = result
             }
             if (currentLaserIndex < width) {
@@ -191,11 +197,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (e.keyCode === 32) {
-            laserId = setInterval(moveLaser, 100)
+            laserId = setInterval(moveLaser, 100);
+            laserSound.play();
         }
 
-    }; function startGame(e) {
+    };
+
+    function startGame(e) {
         if (e.keyCode === 13) {
+            backgroundMusic.play();
             if (easy.checked) {
                 invaderId = setInterval(moveInvader, 400);
             } else if (medium.checked) {
@@ -205,13 +215,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             document.addEventListener("keyup", shoot);
             document.addEventListener('keydown', moveShooter);
-            countDown()
+            countDown();
         }
     }
 
-    document.addEventListener("keydown", startGame)
+    document.addEventListener("keydown", startGame);
+
+    // modification 01 - sfx function
+
+    function sound(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+        this.play = function() {
+            this.sound.play();
+        }
+        this.stop = function() {
+            this.sound.pause();
+        }
+    };
 
 
 
 
-}); 
+});
