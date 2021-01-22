@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var result = 0;
     var direction = 1;
     var invaderId = null;
+    var timeLeft = 0
     // modification 05 - declaring sfx variables
     var laserSound = new sound("sfx/shoot.wav");
     var explosionSound = new sound("sfx/explosion.wav");
@@ -34,23 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // alien invaders
 
-    function countDown() {
-        var timeLeft = 0
-        if (easy.checked) {
-            timeLeft = 28
-        } else if (medium.checked) {
-            timeLeft = 20
-        } else if (difficult.checked) {
-            timeLeft = 13
-        }
-        setInterval(function() {
-            if (timeLeft <= 0) {
-                clearInterval(timeLeft = 0)
-            }
-            timeLeftDisplay.innerHTML = timeLeft
-            timeLeft -= 1
-        }, 1000)
-    }
+    
 
     const alienInvaders = [
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
@@ -82,6 +67,26 @@ document.addEventListener('DOMContentLoaded', () => {
         squares[currentShooterIndex].classList.add('shooter');
     }
 
+     // countdown
+     function countDown() {
+        if (easy.checked) {
+            timeLeft = 28
+        } else if (medium.checked) {
+            timeLeft = 20
+        } else if (difficult.checked) {
+            timeLeft = 13
+        }
+         var timeLeftInterval = setInterval(function() {
+            if (alienInvaderTakenDown.length === alienInvaders.length){
+                clearInterval(timeLeftInterval)
+            }
+            else if (timeLeft <= 0) {
+                clearInterval(timeLeft = 0)
+            }
+            timeLeftDisplay.innerHTML = timeLeft
+            timeLeft -= 1
+        }, 1000)
+    }
 
     //alien invaders attack
 
@@ -194,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     result += 30
                 }
 
-                resultDisplay.textContent = result
+                resultDisplay.textContent = result 
             }
             if (currentLaserIndex < width) {
                 clearInterval(laserId)
@@ -209,6 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };
 
+   
+    // start game 
     function startGame(e) {
         if (e.keyCode === 13) {
             backgroundMusic.play();
